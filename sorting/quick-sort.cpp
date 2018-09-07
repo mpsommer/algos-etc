@@ -1,13 +1,6 @@
 // Reference: https://www.geeksforgeeks.org/quick-sort/
 
-#include <stdio.h>
-
-
-void swap(int* a, int* b) {
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
+#include <iostream>
 
 /* This function takes last element as pivot, places 
    the pivot element at its correct position in sorted 
@@ -26,10 +19,10 @@ int partition (int arr[], int low, int high)
 		if (arr[j] <= pivot) 
 		{ 
 			i++;    // increment index of smaller element 
-			swap(&arr[i], &arr[j]); 
+			std::swap(arr[i], arr[j]); 
 		} 
 	} 
-	swap(&arr[i + 1], &arr[high]); 
+	std::swap(arr[i + 1], arr[high]); 
 	return (i + 1); 
 } 
   
