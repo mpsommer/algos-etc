@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void merge(int arr[], int l, int m, int r) {
+void merge(int* arr, int l, int m, int r) {
 	int i, j, k;
 	int leftLength = m + 1 - l;
 	int rightLength = r - m;
-
 	int left[leftLength], right[rightLength];
 
 	for (i = 0; i < leftLength; i++) {
@@ -21,7 +20,7 @@ void merge(int arr[], int l, int m, int r) {
 	i = 0;
 	j = 0;
 	k = l;
-	
+
 	while (i < leftLength && j < rightLength) {
 		if(left[i] <= right[j]) {
 			arr[k] = left[i++];
@@ -30,24 +29,23 @@ void merge(int arr[], int l, int m, int r) {
 		}
 		k++;
 	}
+
 	while (i < leftLength) {
-		arr[k] = left[i++];
-		k++;
+		arr[k++] = left[i++];
 	}
 
 	while (j < rightLength) {
-		arr[k] = right[j++];
-		k++;
+		arr[k++] = right[j++];
 	}
 }
 
-void mergeSort(int arr[], int l, int r) {
+void mergeSort(int* arr, int l, int r) {
 	if (l < r) {
 		int m = l + (r - l) / 2;
-		mergeSort(arr, l, m);
-		mergeSort(arr, m +1, r);
+		mergeSort(arr, l , m);
+		mergeSort(arr, m + 1, r);
 		merge(arr, l, m, r);
-	}
+	} 
 }
 
 /* UTILITY FUNCTIONS */
